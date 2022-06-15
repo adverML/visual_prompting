@@ -18,11 +18,13 @@ from models import prompters
 from utils import accuracy, AverageMeter, ProgressMeter, save_checkpoint
 from utils import cosine_lr, convert_models_to_fp32, refine_classname
 
+import foolbox as fb
 
 
 def parse_option():
     parser = argparse.ArgumentParser('Visual Prompting for CLIP')
 
+    parser.add_argument('--attack', type=str, default='', help='attack such as PGD')
     parser.add_argument('--print_freq', type=int, default=10,
                         help='print frequency')
     parser.add_argument('--save_freq', type=int, default=50,
