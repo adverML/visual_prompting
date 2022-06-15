@@ -250,8 +250,14 @@ def train(train_loader, texts, model, prompter, optimizer, scheduler, criterion,
 
     end = time.time()
     for i, (images, target) in enumerate(tqdm(train_loader)):
-
-pgd:\            _, advs, success = attack(fmodel, images, labels, epsilons=epsilons)        # measure data loading time
+        if args.attack == 'pgd':
+            _, advs, success = attack(fmodel, images, labels, epsilons=epsilons) # https://github.com/bethgelab/foolbox
+            # _, advs, success = _, advs, success = attack(fmodel, images, labels, epsilons=epsilons)
+            images = adv_clip[0] # list to tensor
+            # success = success[0]
+            # adv = adv[0]
+            
+        # measure data loading time
         data_time.update(time.time() - end)
 
         # adjust learning rate
