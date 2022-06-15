@@ -22,16 +22,11 @@ from utils import accuracy, AverageMeter, ProgressMeter, save_checkpoint, cosine
 def parse_option():
     parser = argparse.ArgumentParser('Visual Prompting for Vision Models')
 
-    parser.add_argument('--print_freq', type=int, default=10,
-                        help='print frequency')
-    parser.add_argument('--save_freq', type=int, default=50,
-                        help='save frequency')
-    parser.add_argument('--batch_size', type=int, default=128,
-                        help='batch_size')
-    parser.add_argument('--num_workers', type=int, default=16,
-                        help='num of workers to use')
-    parser.add_argument('--epochs', type=int, default=1000,
-                        help='number of training epoch5s')
+    parser.add_argument('--print_freq', type=int, default=10, help='print frequency')
+    parser.add_argument('--save_freq', type=int, default=50, help='save frequency')
+    parser.add_argument('--batch_size', type=int, default=128, help='batch_size')
+    parser.add_argument('--num_workers', type=int, default=16, help='num of workers to use')
+    parser.add_argument('--epochs', type=int, default=1000, help='number of training epoch5s')
 
     # optimization
     parser.add_argument('--optim', type=str, default='sgd',
